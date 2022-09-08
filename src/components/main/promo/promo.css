@@ -22,17 +22,17 @@
 }
 
 .promo__title {
+  margin: 0;
   font-style: normal;
   font-weight: 400;
   font-size: 50px;
   line-height: 58px;
   color: #FFF;
   max-width: 640px;
-  word-wrap: inherit;
 }
 
 .promo__text {
-  margin-top: 36px;
+  margin: 36px 0 0 0;
   max-width: 310px;
   font-style: normal;
   font-weight: 400;
