@@ -1,2 +1,5 @@
 @import url(./vendor/normalize.css);
 @import url(./vendor/fonts/inter.css);
+@import url(./components/header/header.css);
+@import url(./components/main/main.css);
+@import url(./components/main/promo/promo.css);

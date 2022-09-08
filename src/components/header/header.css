@@ -1,0 +1,45 @@
+.header {
+  display: flex;
+  align-items: center;
+  min-height: 74px;
+  background-color: #073042;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  min-width: 1140px;
+  margin: 0 auto;
+}
+
+.header__logo {
+  width: 38px;
+  height: 38px;
+}
+
+.header__button-container {
+  display: flex;
+  align-items: center;
+}
+
+.header__registration {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #FFF;
+}
+
+.header__login {
+  margin-left: 30px;
+  height: 32px;
+  width: 76px;
+  background-color: #3DDC84;
+  border: none;
+  border-radius: 3px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #000;
+}
