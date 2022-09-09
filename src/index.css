@@ -3,3 +3,8 @@
 @import url(./components/header/header.css);
 @import url(./components/main/main.css);
 @import url(./components/main/promo/promo.css);
+@import url(./components/main/aboutProject/aboutProject.css);
+@import url(./components/main/techs/techs.css);
+@import url(./components/main/aboutMe/aboutMe.css);
+@import url(./components/main/portfolio/portfolio.css);
+@import url(./components/footer/footer.css);

@@ -2,7 +2,7 @@ import Planet from '../../../images/text__COLOR_landing-logo.png';
 
 function Promo() {
   return(
-    <div className='promo'>
+    <section className='promo'>
       <div className='promo__container'>
         <img className='promo__image-planet' src={Planet} alt='Планета'/>
         <div className='promo__text-container'>
@@ -11,7 +11,7 @@ function Promo() {
           <button className='promo__learn-more'>Узнать больше</button>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 
