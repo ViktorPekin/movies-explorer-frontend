@@ -2,16 +2,8 @@
   min-height: 475px;
 }
 
-.portfolio__container {
-  display: flex;
-  margin: 0 auto;
-  flex-direction: column;
-  justify-content: space-between;
-  max-width: 1140px;
-}
-
 .portfolio__title {
-  margin: 50px 0 0 0;
+  margin: 52px 0 0 0;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -49,5 +41,23 @@
   background-color: #424242;
 }
 
+@media screen and (max-width: 768px) {
+  .portfolio {
+    min-height: 440px;
+  }
+  .portfolio__title {
+    margin: 50px 0 0 0;
+  }
 
+  .portfolio__link-text {
+    font-size: 28px;
+  }
 
+  .portfolio__link-container {
+    margin-top: 20px;
+  }
+
+  .portfolio__border {
+    background-color: #E6E6E6;
+  }
+}

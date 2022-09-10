@@ -4,10 +4,7 @@
 }
 
 .header__container {
-  display: flex;
-  justify-content: space-between;
-  max-width: 1140px;
-  margin: 0 auto;
+  flex-direction: row;
 }
 
 .header__logo {
@@ -40,4 +37,32 @@
   font-size: 12px;
   line-height: 16px;
   color: #000;
+}
+
+@media screen and (max-width: 768px) {
+  .header__container {
+    max-width: 92%;
+  }
+}
+
+@media screen and (max-width: 426px) {
+  .header__container {
+    max-width: 91%;
+  }
+
+  .header__button-container {
+    margin-top: 24px;
+  }
+
+  .header__registration {
+    font-size: 10px;
+    line-height: 16px;
+  }
+
+  .header__login {
+    margin-left: 14px;
+    height: 26px;
+    width: 54px;
+    font-size: 10px;
+  }
 }

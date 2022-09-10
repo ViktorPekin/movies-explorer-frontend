@@ -3,7 +3,7 @@ import link from '../../../images/text__COLOR_font-main.svg';
 function Portfolio() {
   return(
     <section className='portfolio'>
-      <div className='portfolio__container'>
+      <div className='portfolio__container container'>
         <h2 className='portfolio__title'>Портфолио</h2>
         <div className='portfolio__link-container'>
           <p className='portfolio__link-text'>Статичный сайт</p>

@@ -2,43 +2,17 @@
   min-height: 608px;
 }
 
-.about-progect__container {
-  max-width: 1140px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.about-progect__title {
-  margin-top: 110px;
-  margin-bottom: 0px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 22px;
-  line-height: 27px;
-  letter-spacing: -0.04em;
-  color: #FFF;
-}
-
-.about-progect__border {
-  margin-top: 23px;
-  height: 1px;
-  width: 100%;
-  background-color: #DADADA;
-}
-
 .about-progect__info {
   display: flex;
   flex-direction: row;
   margin-top: 70px;
 }
 
-.about-progect__stages {
+.about-progect__diplom {
   max-width: 550px;
 }
 
-.about-progect__stages-title {
+.about-progect__diplom-title {
   margin: 0;
   font-style: normal;
   font-weight: 400;
@@ -48,7 +22,7 @@
   color: #FFF;
 }
 
-.about-progect__stages-subtitle {
+.about-progect__diplom-subtitle {
   margin: 26px 0 0 0;
   font-style: normal;
   font-weight: 400;
@@ -57,27 +31,8 @@
   color: #FFF;
 }
 
-.about-progect__dedline {
+.about-progect__diplom:last-child {
   margin-left: 50px;
-}
-
-.about-progect__dedline-title {
-  margin: 0;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
-  letter-spacing: -0.04em;
-  color: #FFF;
-}
-
-.about-progect__dedline-subtitle {
-  margin: 26px 0 0 0;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  color: #FFF;
 }
 
 .about-progect__block {
@@ -100,6 +55,7 @@
   line-height: 17px;
   text-align: center;
 }
+
 
 .about-progect__block-four-week {
   margin: 0;
@@ -148,4 +104,51 @@
   line-height: 17px;
   text-align: center;
   color: #8B8B8B;
+}
+
+
+@media screen and (max-width: 768px) {
+  .about-progect {
+    min-height: 585px;
+  }
+  .about-progect__diplom {
+    max-width: 319px;
+  }
+
+  .about-progect__diplom-subtitle {
+    margin: 22px 0 0 0;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .about-progect__diplom:last-child {
+    margin-left: 30px;
+  }
+
+  .about-progect__block {
+    display: flex;
+    flex-direction: row;
+    margin-top: 93px;
+    height: 36px;
+  }
+
+  .about-progect__block-one-week {
+    font-weight: 400;
+    min-width: 21%;
+  }
+
+  .about-progect__block-four-week {
+    font-weight: 400;
+    min-width: 79%;
+  }
+
+  .about-progect__backend {
+    font-weight: 400;
+    min-width: 21%;
+  }
+
+  .about-progect__frontend {
+    font-weight: 400;
+    min-width: 79%;
+  }
 }

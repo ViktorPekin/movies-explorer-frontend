@@ -3,7 +3,7 @@ import logo from '../../images/logo.svg';
 function Header() {
   return(
     <header className='header'>
-      <div className='header__container'>
+      <div className='header__container container'>
         <img className='header__logo' src={logo} alt="Логотип"/>
         <div className='header__button-container'>
           <a className='header__registration' href='#'>Регистрация</a>

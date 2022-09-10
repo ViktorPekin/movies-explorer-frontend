@@ -1,9 +1,8 @@
 function Techs() {
   return(
     <section className='techs'>
-      <div className='techs__container'>
-        <h2 className='techs__title'>Технологии</h2>
-        <div className='techs__border'></div>
+      <div className='techs__container container'>
+        <h2 className='techs__title main__title'>Технологии</h2>
         <div className='techs__content'>
           <h3 className='techs__content-title'>7 технологий</h3>
           <p className='techs__content-text'>

@@ -3,9 +3,8 @@ import photo from '../../../images/pic__COLOR_pic.png'
 function AboutMe() {
   return(
     <section className='about-me'>
-      <div className='about-me__container'>
-        <h2 className='about-me__title'>Студент</h2>
-        <div className='about-me__border'></div>
+      <div className='about-me__container container'>
+        <h2 className='about-me__title main__title'>Студент</h2>
         <div className='about-me__content'>
           <img className='about-me__photo' src={photo} alt='фото' />
           <div className='abiut-me__info'>
