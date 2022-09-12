@@ -1,6 +1,6 @@
 .header {
   min-height: 74px;
-  background-color: #073042;
+  background-color: #202020;
 }
 
 .header__container {
@@ -8,61 +8,78 @@
 }
 
 .header__logo {
-  margin-top: 18px;
   width: 38px;
   height: 38px;
 }
 
-.header__button-container {
-  margin-top: 21px;
+.header__link-container {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
 }
 
-.header__registration {
+.header__link {
   font-style: normal;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 13px;
+  line-height: 18px;
+  text-align: right;
+  color: #FFF;
+  text-decoration: none;
+  margin-left: 44px;
+}
+
+.header__link:last-child {
+  margin-left: 16px;
+}
+
+.header__account {
+  margin-top: 21px;
+  background-color:  #313131;
+  width: 100px;
+  height: 32px;
+  border: none;
+  border-radius: 20px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
   line-height: 16px;
   color: #FFF;
 }
 
-.header__login {
-  margin-left: 30px;
-  height: 32px;
-  width: 76px;
-  background-color: #3DDC84;
+.header__burger {
+  margin-top: 15px;
+  display: none;
   border: none;
-  border-radius: 3px;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-  color: #000;
+  background-color: #202020;
+  background: center / contain no-repeat url('../../images/burger.svg');
+  width: 44px;
+  height: 44px;
 }
 
 @media screen and (max-width: 768px) {
   .header__container {
+    flex-direction: row;
     max-width: 92%;
+  }
+
+  .header__account{
+    display: none;
+  }
+
+  .header__burger {
+    display: block;
+  }
+
+  .header__link {
+    display: none;
   }
 }
 
 @media screen and (max-width: 426px) {
-  .header__container {
-    max-width: 91%;
-  }
-
-  .header__button-container {
-    margin-top: 24px;
-  }
-
-  .header__registration {
-    font-size: 10px;
-    line-height: 16px;
-  }
-
-  .header__login {
-    margin-left: 14px;
-    height: 26px;
-    width: 54px;
-    font-size: 10px;
+  .header__burger {
+    width: 40px;
+    height: 43px;
   }
 }
+

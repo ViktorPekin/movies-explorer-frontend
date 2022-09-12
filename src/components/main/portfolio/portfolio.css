@@ -61,3 +61,34 @@
     background-color: #E6E6E6;
   }
 }
+
+@media screen and (max-width: 426px) {
+  .portfolio {
+    min-height: 344px;
+  }
+
+  .portfolio__container {
+    max-width: 91%;
+  }
+
+  .portfolio__title {
+    margin: 50px 0 0 0;
+    font-size: 14px;
+    line-height: 20px;
+    color: #A0A0A0;
+  }
+
+  .portfolio__link-container {
+    margin-top: 20px;
+    height: 28px;
+  }
+
+  .portfolio__link-text {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .portfolio__link-container:first-of-type {
+    margin-top: 40px;
+  }
+}

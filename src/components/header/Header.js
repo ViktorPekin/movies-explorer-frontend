@@ -1,14 +1,16 @@
 import logo from '../../images/logo.svg';
 
-function Header() {
+function Header(props) {
   return(
     <header className='header'>
       <div className='header__container container'>
-        <img className='header__logo' src={logo} alt="Логотип"/>
-        <div className='header__button-container'>
-          <a className='header__registration' href='#'>Регистрация</a>
-          <button className='header__login'>Войти</button>
+        <div className='header__link-container'>
+          <img className='header__logo' src={logo} alt="Логотип"/>
+          <a className='header__link' href='#'>Фильмы</a>
+          <a className='header__link' href='#'>Сохранённые фильмы</a>
         </div>
+        <button className='header__account'>Аккаунт</button>
+        <button onClick={props.openPopup} className='header__burger'></button>
       </div>
     </header>
   )

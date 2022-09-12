@@ -22,3 +22,15 @@
     margin-top: 90px;
   }
 }
+
+@media screen and (max-width: 426px) {
+  .main__title {
+    margin-top: 70px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .main__title:after {
+    margin-top: 28px;
+  }
+}

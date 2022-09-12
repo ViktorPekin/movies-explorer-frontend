@@ -55,3 +55,48 @@
     max-width: 92%;
   }
 }
+
+@media screen and (max-width: 426px) {
+  .footer {
+    min-height: 243px;
+  }
+  .footer__container {
+    max-width: 94%;
+  }
+
+  .footer__title {
+    margin: 79px 0 0 0;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .footer__bottom-container {
+    margin-top: 30px;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .footer__link-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer__link {
+    margin: 0;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+  }
+
+  .footer__link:first-child {
+    margin: 0 0 12px 0;
+  }
+
+  .footer__age {
+    margin-top: 30px;
+    font-size: 12px;
+    line-height: 15px;
+    color: #8B8B8B;
+  }
+}

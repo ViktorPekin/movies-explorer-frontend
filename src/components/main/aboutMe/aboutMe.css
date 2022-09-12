@@ -10,8 +10,8 @@
 }
 
 .about-me__photo {
-  max-width: 270px;
-  max-height: 327px;
+  width: 270px;
+  height: 327px;
   margin-left: 49px;
 }
 
@@ -61,8 +61,8 @@
   }
 
   .about-me__photo {
-    max-width: 255px;
-    max-height: 307px;
+    width: 255px;
+    height: 307px;
   }
 
   .about-me__name {
@@ -85,5 +85,56 @@
 
   .about-me__github {
     margin: 87px 0 0 0;
+  }
+}
+
+@media screen and (max-width: 549px) {
+  .about-me__content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+  }
+
+  .about-me__photo {
+    width: 292px;
+    height: 352px;
+    margin-left: 0;
+  }
+
+  .about-me__name {
+    margin-top: 40px;
+  }
+}
+
+@media screen and (max-width: 426px) {
+  .about-me {
+    min-height: 854px;
+  }
+
+  .about-me__container {
+    max-width: 91%;
+  }
+
+  .about-me__name {
+    margin-top: 40px;
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .about-me__subName {
+    margin: 20px 0 0 0;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-me__text {
+    margin: 20px 0 0 0;
+    max-width: 100%;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-me__github {
+    margin-top: 40px;
   }
 }

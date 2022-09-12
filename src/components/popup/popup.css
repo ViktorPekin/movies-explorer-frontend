@@ -1,0 +1,123 @@
+.popup {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  visibility: hidden;
+  justify-content: right;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  overflow-y: hidden;
+  overflow-x: auto;
+  transform: translate(-100%, 0px);
+  transition: all 0.8s ease 0s;
+}
+
+.popup_opened {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(0px, 0px);
+}
+
+.popup__container {
+  width: 520px;
+  height: 100%;
+  background-color: #202020;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.popup__exit {
+  padding: 0;
+  position: absolute;
+  top: 23px;
+  right: 22px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: center / contain no-repeat url('../../images/exit-popup.svg');
+}
+
+.popup__link-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popup__links {
+  display: flex;
+  flex-direction: column;
+  margin-top: 159px;
+}
+
+.popup__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 28px 0 0 0;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.popup__link:first-child {
+  margin: 0;
+}
+
+.popup__link:nth-child(2):after {
+  content: '';
+  margin-top: 4px;
+  width: 72px;
+  height: 2px;
+  background-color: #FFF;
+}
+
+.popup__link:nth-child(2) + .popup__link {
+  margin-top: 22px;
+}
+
+.popup__button {
+  margin: 0 0 90px 0;
+  width: 100px;
+  height: 32px;
+  background-color: #313131;
+  border-radius: 20px;
+  border: none;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+@media screen and (max-width: 426px) {
+  .popup__exit {
+    top: 13px;
+    right: 13px;
+  }
+
+  .popup__links {
+    margin-top: 144px;
+  }
+
+  .popup__link {
+    margin: 24px 0 0 0;
+  }
+
+  .popup__link:nth-child(2):after {
+    margin-top: 7px;
+  }
+
+  .popup__link:nth-child(2) + .popup__link {
+    margin-top: 15px;
+  }
+}
