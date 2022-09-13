@@ -6,6 +6,7 @@ import Main from '../main/Main';
 import Movies from "../movies/Movies";
 import Popup from '../popup/Popup';
 import SavedMovies from "../savedMovies/SavedMovies";
+import Profile from "../profile/Profile";
 
 function App() {
   const [isPopupOpen , setIsPopupOpen] = useState(false);
@@ -25,6 +26,9 @@ function App() {
         }/>
         <Route path="/saved-movies" element={
           <SavedMovies/>
+        }/>
+        <Route path="/profile" element={
+          <Profile/>
         }/>
       </Routes>
       <Popup isOpen={isPopupOpen} closePopup={closePopup}/>
