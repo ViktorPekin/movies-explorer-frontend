@@ -1,6 +1,7 @@
 @import url(./vendor/normalize.css);
 @import url(./vendor/fonts/inter.css);
 @import url(./utils/css/container.css);
+@import url(./components/app/App.css);
 @import url(./components/header/headerMain.css);
 @import url(./components/header/header.css);
 @import url(./components/main/main.css);
@@ -19,3 +20,6 @@
 @import url(./components/popup/popup.css);
 @import url(./components/savedMovies/savedMovies.css);
 @import url(./components/profile/Profile.css);
+@import url(./utils/css/log-reg.css);
+@import url(./components/Login/login.css);
+@import url(./components/Register/register.css);
