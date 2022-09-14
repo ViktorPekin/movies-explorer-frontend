@@ -1,5 +1,3 @@
-import link from '../../../images/text__COLOR_font-main.svg';
-
 function Portfolio() {
   return(
     <section className='portfolio'>
@@ -7,23 +5,17 @@ function Portfolio() {
         <h2 className='portfolio__title'>Портфолио</h2>
         <div className='portfolio__link-container'>
           <p className='portfolio__link-text'>Статичный сайт</p>
-          <a className='portfolio__link' href='https://github.com/ViktorPekin/how-to-learn'>
-            <img className='portfolio__link-img' src={link} alt='Статичный сайт'/>
-          </a>
+          <a className='portfolio__link' target="_blank" rel="noreferrer" href='https://github.com/ViktorPekin/how-to-learn'> </a>
         </div>
         <div className='portfolio__border'></div>
         <div className='portfolio__link-container'>
           <p className='portfolio__link-text'>Адаптивный сайт</p>
-          <a className='portfolio__link' href='https://github.com/ViktorPekin/russian-travel'>
-            <img className='portfolio__link-img' src={link} alt='Адаптивный сайт'/>
-          </a>
+          <a className='portfolio__link' target="_blank" rel="noreferrer" href='https://github.com/ViktorPekin/russian-travel'> </a>
         </div>
         <div className='portfolio__border'></div>
         <div className='portfolio__link-container'>
           <p className='portfolio__link-text'>Одностраничное приложение</p>
-          <a className='portfolio__link' href='https://github.com/ViktorPekin/react-mesto-auth'>
-            <img className='portfolio__link-img' src={link} alt='Одностраничное приложение'/>
-          </a>
+          <a className='portfolio__link' target="_blank" rel="noreferrer" href='https://github.com/ViktorPekin/react-mesto-auth'> </a>
         </div>
       </div>
     </section>

@@ -34,6 +34,16 @@
   color: #FFF;
 }
 
+.portfolio__link {
+  background: center / contain no-repeat url(../../../images/link-portfolio.svg);
+  width: 20px;
+  height: 20px;
+}
+
+.portfolio__link:hover {
+  opacity: 0.7;
+}
+
 .portfolio__border {
   margin-top: 19px;
   width: 100%;

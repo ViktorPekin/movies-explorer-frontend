@@ -3,10 +3,10 @@ import SearchForm from "../searchForm/SearchForm";
 import MoviesCardList from "../moviesCardList/MoviesCardList";
 import Footer from "../footer/Footer";
 
-function SavedMovies() {
+function SavedMovies(props) {
   return(
     <div className='saved-movies'>
-      <Header/>
+      <Header openPopup={props.onOpen}/>
       <SearchForm/>
       <MoviesCardList savedMovies={true}/>
       <Footer/>

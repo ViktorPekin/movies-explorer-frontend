@@ -39,18 +39,26 @@
 }
 
 .promo__learn-more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 146px;
-  width: 129px;
-  height: 36px;
+  width: 128px;
+  height: 35px;
   background-color: #073042;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
   color: #FFF;
+  text-decoration: none;
   border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 3px;
   margin-bottom: 20px;
+}
+
+.promo__learn-more:hover {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 924px) {

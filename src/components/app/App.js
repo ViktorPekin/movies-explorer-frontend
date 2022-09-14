@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import {useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import Register from '../Register/Register';
 import Main from '../main/Main';
@@ -8,6 +8,7 @@ import Popup from '../popup/Popup';
 import SavedMovies from "../savedMovies/SavedMovies";
 import Profile from "../profile/Profile";
 import Login from '../Login/Login';
+import NotFound from "../notFound/NotFound";
 
 function App() {
   const [isPopupOpen , setIsPopupOpen] = useState(false);
@@ -32,10 +33,13 @@ function App() {
           <Movies onOpen={setIsPopupOpen}/>
         }/>
         <Route path="/saved-movies" element={
-          <SavedMovies/>
+          <SavedMovies onOpen={setIsPopupOpen}/>
         }/>
         <Route path="/profile" element={
-          <Profile/>
+          <Profile onOpen={setIsPopupOpen}/>
+        }/>
+        <Route path="*" element={
+          <NotFound/>
         }/>
       </Routes>
       <Popup isOpen={isPopupOpen} closePopup={closePopup}/>

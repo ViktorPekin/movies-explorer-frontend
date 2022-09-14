@@ -16,7 +16,7 @@ function AboutMe() {
             С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке,
             начал заниматься фриланс-заказами и ушёл с постоянной работы.
             </p>
-            <a className='about-me__github' href="https://github.com/ViktorPekin">Github</a>
+            <a className='about-me__github' target="_blank" rel="noreferrer" href="https://github.com/ViktorPekin">Github</a>
           </div>
         </div>
       </div>
