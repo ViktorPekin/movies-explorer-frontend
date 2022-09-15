@@ -49,6 +49,7 @@
   background-color: #202020;
   border: none;
   outline: none;
+  width: 80%;
   font-style: normal;
   font-weight: 400;
   font-size: 11px;
@@ -82,7 +83,12 @@
   color: #FFFFFF;
 }
 
-.profile__button-exit{
+.profile__form-button:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.profile__button-exit {
   padding: 0;
   margin: 16px 0 70px 0;
   border: none;
@@ -92,6 +98,11 @@
   font-size: 13px;
   line-height: 16px;
   color: #EE3465;
+}
+
+.profile__button-exit {
+  opacity: 0.7;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {

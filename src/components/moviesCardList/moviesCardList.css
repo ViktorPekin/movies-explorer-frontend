@@ -34,6 +34,11 @@
   color: #FFF;
 }
 
+.movies-card-list__button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
 .movies-card-list__grid_button_margin {
   padding: 0;
   margin: 70px 0 210px 0;

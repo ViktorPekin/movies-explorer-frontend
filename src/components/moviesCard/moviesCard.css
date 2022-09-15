@@ -55,6 +55,10 @@
   cursor: pointer;
 }
 
+.movies-card__like:hover {
+  opacity: 0.8;
+}
+
 .movies-card__delite {
   display: none;
   margin: 3px 8px 0 0;
@@ -97,5 +101,6 @@
 
   .movies-card__delite {
     margin: 0 4px 0 0;
+    display: block;
   }
 }

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import logo from '../../images/logo.svg';
 
 function Login() {
@@ -10,12 +11,12 @@ function Login() {
           <div className='log-reg__label-container'>
             <div className='log-reg__label'>
               <p className='log-reg__text'>E-mail</p>
-              <input className='log-reg__input' type='email'></input>
+              <input className='log-reg__input' type='email' minlength="2" maxLength="30" required></input>
               <span className='log-reg__input-error'>Что-то пошло не так...</span>
             </div>
             <div className='log-reg__label'>
               <p className='log-reg__text'>Пароль</p>
-              <input className='log-reg__input' type='password'></input>
+              <input className='log-reg__input' type='password' minlength="2" maxLength="30" required></input>
               <span className='log-reg__input-error_active'>Что-то пошло не так...</span>
             </div>
           </div>
@@ -23,7 +24,7 @@ function Login() {
         </form>
         <div className='log-reg__login'>
             <p className='log-reg__login-text'>Ещё не зарегистрированы?</p>
-            <a className='log-reg__login-link' href='#'>Регистрация</a>
+            <Link className='log-reg__login-link' to='/signup'>Регистрация</Link>
         </div>
       </div>
     </div>

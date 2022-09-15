@@ -36,6 +36,11 @@
   background: center / contain no-repeat url('../../images/find.svg');
 }
 
+.search-form__button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 768px) {
   .search-form__container {
     max-width: 92%;

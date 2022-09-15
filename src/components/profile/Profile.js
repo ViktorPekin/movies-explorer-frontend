@@ -9,12 +9,14 @@ function Profile(props) {
         <form className='profile__form'>
           <div className='profile__label profile__label_name'>
             <p className='profile__text'>Имя</p>
-            <input className='profile__input' type='text' placeholder='Виталий'></input>
+            <input className='profile__input' type='text' placeholder='Виталий'
+            minlength="2" maxLength="30" required></input>
           </div>
           <div className='profile__border'></div>
           <div className='profile__label profile__label_email'>
             <p className='profile__text'>E-mail</p>
-            <input className='profile__input' type='email' placeholder='pochta@yandex.ru'></input>
+            <input className='profile__input' type='email' placeholder='pochta@yandex.ru'
+            minlength="2" maxLength="30" required></input>
           </div>
           <button className='profile__form-button'>Редактировать</button>
         </form>

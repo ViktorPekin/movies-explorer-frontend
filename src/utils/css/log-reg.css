@@ -110,6 +110,11 @@
   color: #FFFFFF;
 }
 
+.log-reg__submit:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
 .log-reg__login {
   margin: 16px 0 70px 0;
   display: flex;
