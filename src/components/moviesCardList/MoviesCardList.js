@@ -8,7 +8,7 @@ function MoviesCardList(props) {
           <MoviesCard savedMovies={props.savedMovies ? true : false}/>
           <MoviesCard savedMovies={props.savedMovies ? true : false}/>
         </ul>
-        <button className={props.savedMovies ? 'movies-card-list__button_hidden' : 'movies-card-list__button'}>Ещё</button>
+        <button type='button' className={props.savedMovies ? 'movies-card-list__button_hidden' : 'movies-card-list__button'}>Ещё</button>
       </div>
     </section>
   )

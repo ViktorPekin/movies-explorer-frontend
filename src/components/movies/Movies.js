@@ -8,8 +8,10 @@ function Movies(props) {
   return(
     <div className='movies'>
       <Header openPopup={props.onOpen}/>
-      <SearchForm/>
-      <MoviesCardList/>
+      <main>
+        <SearchForm/>
+        <MoviesCardList/>
+      </main>
       <Footer/>
     </div>
   )

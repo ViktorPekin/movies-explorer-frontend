@@ -75,6 +75,7 @@
 @media screen and (max-width: 768px) {
   .techs {
     min-height: 567px;
+    background-color: #202020;
   }
 
   .techs__title {
@@ -92,13 +93,18 @@
   }
 
   .techs__tech-container {
-    margin-top: 83px;
+    margin-top: 73px;
   }
 
   .techs__tech {
     min-width: 84px;
     min-height: 57px;
     background-color: #303030;
+    margin-top: 10px;
+  }
+
+  .techs__tech:first-child {
+    margin: 10px 0 0 0;
   }
 
   .techs__tech-text {
@@ -157,5 +163,14 @@
   .techs__tech-text {
     font-size: 12px;
     line-height: 15px;
+  }
+
+  .techs__title:after {
+    content: ' ';
+    display: block;
+    margin-top: 23px;
+    height: 1px;
+    width: 100%;
+    background-color: #000;
   }
 }

@@ -4,7 +4,7 @@ function Profile(props) {
   return(
     <div className='profile'>
       <Header openPopup={props.onOpen}/>
-      <div className='profile__container container'>
+      <main className='profile__container container'>
         <h2 className='profile__title'>Привет, Виталий!</h2>
         <form className='profile__form'>
           <div className='profile__label profile__label_name'>
@@ -20,8 +20,8 @@ function Profile(props) {
           </div>
           <button className='profile__form-button'>Редактировать</button>
         </form>
-        <button className='profile__button-exit'>Выйти из аккаунта</button>
-      </div>
+        <button type='button' className='profile__button-exit'>Выйти из аккаунта</button>
+      </main>
     </div>
   )
 }

@@ -1,10 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function Popup(props) {
   return(
     <div className={`popup ${props.isOpen ? 'popup_opened' : ''}`}>
       <div className='popup__container'>
-        <button onClick={props.closePopup} className='popup__exit'></button>
+        <button type='button' onClick={props.closePopup} className='popup__exit'></button>
         <div className='popup__link-container'>
           <nav className='popup__links'>
             <p className='popup__link'>Главная</p>
@@ -15,7 +15,7 @@ function Popup(props) {
               Сохранённые фильмы
             </NavLink>
           </nav>
-          <button className='popup__button'>Аккаунт</button>
+          <Link className='popup__button' to='/profile'>Аккаунт</Link>
         </div>
       </div>
     </div>

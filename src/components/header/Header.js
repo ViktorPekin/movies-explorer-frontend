@@ -15,7 +15,7 @@ function Header(props) {
           </nav>
         </div>
         <Link className='header__account' to='/profile'>Аккаунт</Link>
-        <button onClick={props.openPopup} className='header__burger'></button>
+        <button type='button' onClick={props.openPopup} className='header__burger'></button>
       </div>
     </header>
   )

@@ -7,7 +7,7 @@ function MoviesCard(props) {
           <p className='movies-card__name'>33 слова о дизайне</p>
           <p className='movies-card__time'>1ч 47м</p>
         </div>
-        <button className={props.savedMovies ? 'movies-card__delite' : 'movies-card__like'}></button>
+        <button type='button' className={props.savedMovies ? 'movies-card__delite' : 'movies-card__like'}></button>
       </div>
     </li>
   )

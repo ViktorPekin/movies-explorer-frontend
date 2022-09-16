@@ -11,17 +11,45 @@
   color: #8B8B8B;
 }
 
+.portfolio__links {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
 .portfolio__link-container {
+  min-height: 50px;
+  margin-top: 20px;
+}
+
+.portfolio__link-container:first-child {
+  margin: 0;
+}
+
+.portfolio__link-container:after {
+  content: '1';
+  margin-top: 19px;
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #424242;
+}
+
+.portfolio__link-container:last-child:after {
+  display: none;
+}
+
+.portfolio__link {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 21px;
-  height: 50px;
+  text-decoration: none;
 }
 
-.portfolio__link-container:first-of-type {
-  margin-top: 50px;
+.portfolio__link:hover {
+  opacity: 0.7;
 }
 
 .portfolio__link-text {
@@ -34,40 +62,24 @@
   color: #FFF;
 }
 
-.portfolio__link {
-  background: center / contain no-repeat url(../../../images/link-portfolio.svg);
-  width: 20px;
-  height: 20px;
-}
-
-.portfolio__link:hover {
-  opacity: 0.7;
-}
-
-.portfolio__border {
-  margin-top: 19px;
-  width: 100%;
-  height: 1px;
-  background-color: #424242;
+.portfolio__link-icon {
+  margin-right: 5px;
+  background: center / contain no-repeat url('../../../images/link-portfolio.svg');
+  width: 18px;
+  height: 18px;
 }
 
 @media screen and (max-width: 768px) {
   .portfolio {
     min-height: 440px;
   }
-  .portfolio__title {
-    margin: 50px 0 0 0;
-  }
 
   .portfolio__link-text {
     font-size: 28px;
   }
 
-  .portfolio__link-container {
-    margin-top: 20px;
-  }
-
-  .portfolio__border {
+  .portfolio__link-container:after {
+    margin-top: 18px;
     background-color: #E6E6E6;
   }
 }
@@ -88,9 +100,12 @@
     color: #A0A0A0;
   }
 
+  .portfolio__links {
+    margin-top: 40px;
+  }
+
   .portfolio__link-container {
-    margin-top: 20px;
-    height: 28px;
+    height: 40px;
   }
 
   .portfolio__link-text {
@@ -98,7 +113,13 @@
     line-height: 28px;
   }
 
-  .portfolio__link-container:first-of-type {
-    margin-top: 40px;
+  .portfolio__link-container:after {
+    margin-top: 19px;
+  }
+
+  .portfolio__link-icon {
+    margin-right: 5px;
+    width: 12px;
+    height: 12px;
   }
 }

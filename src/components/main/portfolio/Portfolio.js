@@ -3,20 +3,26 @@ function Portfolio() {
     <section className='portfolio'>
       <div className='portfolio__container container'>
         <h2 className='portfolio__title'>Портфолио</h2>
-        <div className='portfolio__link-container'>
-          <p className='portfolio__link-text'>Статичный сайт</p>
-          <a className='portfolio__link' target="_blank" rel="noreferrer" href='https://github.com/ViktorPekin/how-to-learn'> </a>
-        </div>
-        <div className='portfolio__border'></div>
-        <div className='portfolio__link-container'>
-          <p className='portfolio__link-text'>Адаптивный сайт</p>
-          <a className='portfolio__link' target="_blank" rel="noreferrer" href='https://github.com/ViktorPekin/russian-travel'> </a>
-        </div>
-        <div className='portfolio__border'></div>
-        <div className='portfolio__link-container'>
-          <p className='portfolio__link-text'>Одностраничное приложение</p>
-          <a className='portfolio__link' target="_blank" rel="noreferrer" href='https://github.com/ViktorPekin/react-mesto-auth'> </a>
-        </div>
+        <ul className='portfolio__links'>
+          <li className='portfolio__link-container'>
+            <a className='portfolio__link' target="_blank" rel="noreferrer" href='https://github.com/ViktorPekin/how-to-learn'>
+              <p className='portfolio__link-text'>Статичный сайт</p>
+              <div className='portfolio__link-icon'></div>
+            </a>
+          </li>
+          <li className='portfolio__link-container'>
+            <a className='portfolio__link' target="_blank" rel="noreferrer" href='https://github.com/ViktorPekin/russian-travel'>
+              <p className='portfolio__link-text'>Адаптивный сайт</p>
+              <div className='portfolio__link-icon'></div>
+            </a>
+          </li>
+          <li className='portfolio__link-container'>
+            <a className='portfolio__link' target="_blank" rel="noreferrer" href='https://github.com/ViktorPekin/react-mesto-auth'>
+              <p className='portfolio__link-text'>Одностраничное приложение</p>
+              <div className='portfolio__link-icon'></div>
+            </a>
+          </li>
+        </ul>
       </div>
     </section>
   )

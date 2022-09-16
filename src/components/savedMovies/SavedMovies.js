@@ -7,8 +7,10 @@ function SavedMovies(props) {
   return(
     <div className='saved-movies'>
       <Header openPopup={props.onOpen}/>
-      <SearchForm/>
-      <MoviesCardList savedMovies={true}/>
+      <main>
+        <SearchForm/>
+        <MoviesCardList savedMovies={true}/>
+      </main>
       <Footer/>
     </div>
   )

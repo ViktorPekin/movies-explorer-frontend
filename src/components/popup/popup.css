@@ -105,6 +105,10 @@
   line-height: 16px;
   text-align: center;
   color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
 }
 
 .popup__button:hover {
