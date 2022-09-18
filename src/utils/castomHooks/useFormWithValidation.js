@@ -1,4 +1,5 @@
  import { useCallback, useState } from "react";
+ import emailValidator from 'email-validator';
 
  export function useFormWithValidation() {
   const [values, setValues] = useState({});
@@ -12,6 +13,12 @@
     setValues({...values, [name]: value});
     setErrors({...errors, [name]: target.validationMessage });
     setIsValid(target.closest("form").checkValidity());
+    if (name === 'email') {
+      setIsValid(emailValidator.validate(value));
+      if (!emailValidator.validate(value)) {
+        setErrors({...errors, [name]: "Неправельная почта" });
+      }
+    }
   };
 
   const resetForm = useCallback(

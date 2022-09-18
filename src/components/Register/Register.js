@@ -14,24 +14,22 @@ function Register(props) {
     validation.isValid ? setValid(true) : setValid(false);
   }, [validation]);
 
-  function checkedValid() {
-    console.log(validation.isValid);
-
-  }
-
   const handlePassword = (e) => {
     setPassword(e.target.value);
     validation.handleChange(e);
+    props.onErrorServer('');
   }
 
   function handleEmail(e) {
     setEmail(e.target.value);
     validation.handleChange(e);
+    props.onErrorServer('');
   }
 
   function handleName(e) {
     setName(e.target.value);
     validation.handleChange(e);
+    props.onErrorServer('');
   }
 
   function handleSubmit(e) {
@@ -53,20 +51,23 @@ function Register(props) {
             <div className='log-reg__label'>
               <p className='log-reg__text'>Имя</p>
               <input onChange={handleName} name='name' className='log-reg__input' type='text' minLength="2" maxLength="30" required></input>
-              <span className='log-reg__input-error'>Что-то пошло не так...</span>
+              <span className={validation.errors.name ? 'log-reg__input-error_active' : 'log-reg__input-error'}>{validation.errors.name}</span>
             </div>
             <div className='log-reg__label'>
               <p className='log-reg__text'>E-mail</p>
-              <input onChange={handleEmail} name='email' className='log-reg__input' type='email' minLength="2" maxLength="30" required></input>
-              <span className='log-reg__input-error'>Что-то пошло не так...</span>
+              <input onChange={handleEmail} name='email' className='log-reg__input' type='email' required></input>
+              <span className={validation.errors.email ? 'log-reg__input-error_active' : 'log-reg__input-error'}>{validation.errors.email}</span>
             </div>
             <div className='log-reg__label'>
               <p className='log-reg__text'>Пароль</p>
-              <input onChange={handlePassword} name='password' className='log-reg__input' type='password' minLength="2" maxLength="30" required></input>
-              <span className='log-reg__input-error_active'>Что-то пошло не так...</span>
+              <input onChange={handlePassword} name='password' className='log-reg__input' type='password' required></input>
+              <span className={validation.errors.password ? 'log-reg__input-error_active' : 'log-reg__input-error'}>{validation.errors.password}</span>
             </div>
           </div>
-          <button className={valid ? 'log-reg__submit' : 'log-reg__submit_disabled'} disabled={!valid}>Зарегистрироваться</button>
+          <div className='log-reg__submit-container'>
+            <p className={props.errorServer ? 'log-reg__error_active' : 'log-reg__error'}>{props.errorServer}</p>
+            <button className={valid ? 'log-reg__submit' : 'log-reg__submit_disabled'} disabled={!valid}>Зарегистрироваться</button>
+          </div>
         </form>
         <div className='log-reg__login'>
             <p className='log-reg__login-text'>Уже зарегистрированы?</p>

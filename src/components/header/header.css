@@ -3,6 +3,11 @@
   background-color: #202020;
 }
 
+.header_main {
+  min-height: 74px;
+  background-color: #073042;
+}
+
 .header__container {
   flex-direction: row;
 }
@@ -71,6 +76,24 @@
   color: #FFF;
 }
 
+.header__account_main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  margin-top: 21px;
+  background-color: #3DDC84;
+  width: 100px;
+  height: 32px;
+  border: none;
+  border-radius: 20px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #000;
+}
+
 .header__account:hover {
   opacity: 0.8;
 }
@@ -95,7 +118,11 @@
     max-width: 92%;
   }
 
-  .header__account{
+  .header__account {
+    display: none;
+  }
+
+  .header__account_main {
     display: none;
   }
 

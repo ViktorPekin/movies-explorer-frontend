@@ -7,7 +7,13 @@ class MainApi {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(`Ошибка: ${res.status}`);
+    return res.json().then((res) => {
+      if (res.validation) {
+        throw new Error(res.validation.body.message);
+      } else {
+        throw new Error(res.message);
+      }
+    })
   }
 
   authUser(data) {

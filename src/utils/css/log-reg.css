@@ -95,8 +95,13 @@
   color: #EE3465;
 }
 
-.log-reg__submit {
+.log-reg__submit-container {
   margin: 134px 0 0 0;
+}
+
+.log-reg__submit,
+.log-reg__submit_disabled {
+  margin: 0;
   width: 100%;
   height: 45px;
   border: none;
@@ -111,24 +116,27 @@
 }
 
 .log-reg__submit_disabled {
-  margin: 134px 0 0 0;
-  width: 100%;
-  height: 45px;
-  border: none;
-  background-color: #4285F4;
-  border-radius: 3px;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
-  text-align: center;
-  color: #FFFFFF;
   opacity: 0.3;
 }
 
 .log-reg__submit:hover {
   opacity: 0.8;
   cursor: pointer;
+}
+
+.log-reg__error {
+  display: none;
+}
+
+.log-reg__error_active,
+.log-reg__error {
+  margin: 0 0 20px 0;
+  text-align: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #EE3465;
 }
 
 .log-reg__login {

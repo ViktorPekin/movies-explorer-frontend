@@ -1,8 +1,9 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { useState } from 'react';
-import {CurrentUserContext} from '../../context/CurrentUserContext';
+import { useState, useEffect } from 'react';
+import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { mainApi } from "../../utils/MainApi";
 
+import ProtectedRoute from '../protectedRoute/ProtectedRoute';
 import Register from '../Register/Register';
 import Main from '../main/Main';
 import Movies from "../movies/Movies";
@@ -18,6 +19,12 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [jwt, setJwt] = useState('');
   const [loggedIn, setloggedIn] = useState(false);
+  const [errorServer, setErrorServer] = useState('');
+  const [profileInfo, setProfileInfo] = useState('');
+
+  useEffect(() => {
+    handleCheckedToken();
+  }, [])
 
   function closePopup() {
     setIsPopupOpen(false);
@@ -25,13 +32,9 @@ function App() {
 
   function handleRegistration(value) {
     mainApi.registrationUser(value).then((res) => {
-      if (res) {
-        handleLogin(value);
-      } else {
-
-      }
+      handleLogin(value);
     }).catch((err) => {
-      console.log(err);
+      setErrorServer(err.message);
     });
   }
 
@@ -40,19 +43,19 @@ function App() {
       if (res.token) {
         localStorage.setItem('token', res.token);
         handleCheckedToken();
+        navigate('/movies');
       }
     }).catch((err) => {
-      console.log(err);
+      setErrorServer(err.message);
     });
   }
 
-  function handleCheckedToken(jwt) {
+  function handleCheckedToken() {
     if (localStorage.getItem('token')) {
       const jwtToken = localStorage.getItem('token');
       mainApi.checkedToken(jwtToken).then((res) => {
         setJwt(jwtToken);
         setloggedIn(true);
-        navigate('/movies');
         setCurrentUser(res.user);
       }).catch((err) => {
         console.log(err);
@@ -62,9 +65,9 @@ function App() {
 
   function handleEditProfil(value) {
     mainApi.patchProfile(value, jwt).then((res) => {
-      console.log(res);
+      setProfileInfo(`Новое имя: ${res.newUser.name} / Новый E-mail: ${res.newUser.email}`);
     }).catch((err) => {
-      console.log(err);
+      setErrorServer(err.message);
     })
   }
 
@@ -73,28 +76,51 @@ function App() {
       <CurrentUserContext.Provider value={currentUser}>
         <Routes>
           <Route path='/signup' element={
-            <Register onRegistration={handleRegistration}/>
+            <Register errorServer={errorServer} onErrorServer={setErrorServer} onRegistration={handleRegistration}/>
           }/>
           <Route path='/signin' element={
-            <Login onLogin={handleLogin}/>
+            <Login errorServer={errorServer} onErrorServer={setErrorServer} onLogin={handleLogin}/>
           }/>
           <Route path="/" element={
-            <Main/>
+            <Main onOpen={setIsPopupOpen} onLogin={loggedIn}/>
           }/>
           <Route path='/movies' element={
-            <Movies onOpen={setIsPopupOpen}/>
+            <ProtectedRoute
+            exact path="/"
+            loggedIn={loggedIn}
+            >
+              <Movies onOpen={setIsPopupOpen}/>
+            </ProtectedRoute>
           }/>
           <Route path="/saved-movies" element={
-            <SavedMovies onOpen={setIsPopupOpen}/>
+            <ProtectedRoute
+            exact path="/"
+            loggedIn={loggedIn}
+            >
+              <SavedMovies onOpen={setIsPopupOpen}/>
+            </ProtectedRoute>
           }/>
           <Route path="/profile" element={
-            <Profile onEditProfile={handleEditProfil} onOpen={setIsPopupOpen}/>
+            <ProtectedRoute
+            exact path="/"
+            loggedIn={loggedIn}
+            >
+              <Profile onLogin={setloggedIn}
+              profileInfo={profileInfo}
+              onProfileInfo={setProfileInfo}
+              errorServer={errorServer}
+              onErrorServer={setErrorServer}
+              onEditProfile={handleEditProfil}
+              onOpen={setIsPopupOpen}/>
+            </ProtectedRoute>
           }/>
           <Route path="*" element={
             <NotFound/>
           }/>
         </Routes>
-        <Popup isOpen={isPopupOpen} closePopup={closePopup}/>
+        <Popup isOpen={isPopupOpen}
+        closePopup={closePopup}
+        />
       </CurrentUserContext.Provider>
     </div>
   );
