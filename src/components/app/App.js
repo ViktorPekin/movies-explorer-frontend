@@ -2,6 +2,7 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { mainApi } from "../../utils/MainApi";
+import { moviesApi } from "../../utils/MoviesApi";
 
 import ProtectedRoute from '../protectedRoute/ProtectedRoute';
 import Register from '../Register/Register';
@@ -21,10 +22,14 @@ function App() {
   const [loggedIn, setloggedIn] = useState(false);
   const [errorServer, setErrorServer] = useState('');
   const [profileInfo, setProfileInfo] = useState('');
+  const [movies, setMovies] = useState([]);
+  const [errorMoviesApi, setErrorMoviesApi] = useState('');
+  const [finallyMoviesApi, setFinallyMoviesApi] = useState(false);
+  const [preloader, setPreloader] = useState(false);
 
   useEffect(() => {
     handleCheckedToken();
-  }, [])
+  }, []);
 
   function closePopup() {
     setIsPopupOpen(false);
@@ -71,6 +76,17 @@ function App() {
     })
   }
 
+  function getMovies() {
+    moviesApi.getMovies().then((res) => {
+      setMovies(res);
+    }).catch((err) => {
+      setErrorMoviesApi(err.message);
+    }).finally(() => {
+      setFinallyMoviesApi(true);
+      setPreloader(false)
+    })
+  }
+
   return (
     <div className="App">
       <CurrentUserContext.Provider value={currentUser}>
@@ -89,7 +105,14 @@ function App() {
             exact path="/"
             loggedIn={loggedIn}
             >
-              <Movies onOpen={setIsPopupOpen}/>
+              <Movies onOpen={setIsPopupOpen}
+              onMovies={getMovies}
+              allMovies={movies}
+              errorMoviesApi={errorMoviesApi}
+              finallyMoviesApi={finallyMoviesApi}
+              onPreloader={setPreloader}
+              preloader={preloader}
+              />
             </ProtectedRoute>
           }/>
           <Route path="/saved-movies" element={

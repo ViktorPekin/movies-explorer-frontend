@@ -55,6 +55,20 @@
   display: none;
 }
 
+.movies-card-list__not-found {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  z-index: 1;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 26px;
+  color: #FFF;
+  text-align: center;
+}
+
 @media screen and (max-width: 1023px) {
   .movies-card-list__grid {
     grid-template-columns: repeat(2, 1fr);
