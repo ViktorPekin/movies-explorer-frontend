@@ -54,6 +54,50 @@ class MainApi {
     }).then(this._checkResponse);
   }
 
+  getMovies(jwt) {
+    return fetch(`${this._baseUrl}/movies`, {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization" : `Bearer ${jwt}`
+    }
+    }).then(this._checkResponse);
+  }
+
+  savedMovie(data, jwt) {
+    return fetch(`${this._baseUrl}/movies`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: `Bearer ${jwt}`
+      },
+      authorization: `Bearer ${jwt}`,
+      body: JSON.stringify({
+        country: data.country,
+        director: data.director,
+        duration: data.duration,
+        year: data.year,
+        description: data.description,
+        image: `https://api.nomoreparties.co${data.image.url}`,
+        trailerLink: data.trailerLink,
+        thumbnail: `https://api.nomoreparties.co${data.image.formats.thumbnail.url}`,
+        movieId: data.id,
+        nameRU: data.nameRU,
+        nameEN: data.nameEN,
+      })
+    }).then(this._checkResponse);
+  }
+
+  deleteMovie(data, jwt) {
+    return fetch(`${this._baseUrl}/movies/${data}`, {
+      method: 'DELETE',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization" : `Bearer ${jwt}`
+    }
+    }).then(this._checkResponse);
+  }
+
   checkedToken(jwt) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',

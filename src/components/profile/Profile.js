@@ -41,6 +41,10 @@ function Profile(props) {
 
   function signOut(){
     localStorage.removeItem('token');
+    props.onSevedMoviesName('');
+    props.onSavedShortMovies(false);
+    props.onFiltredMovies([]);
+    props.onFinallyMoviesApi(false);
     props.onLogin(false);
     navigate('/');
   }

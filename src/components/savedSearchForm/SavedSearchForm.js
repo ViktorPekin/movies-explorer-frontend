@@ -1,20 +1,14 @@
-import FilterCheckbox from "./filterCheckbox/FilterCheckbox";
+import FilterCheckbox from "../searchForm/filterCheckbox";
 
 function SearchForm(props) {
-
   function handleMoviesName(e) {
     props.onMovieName(e.target.value);
   }
 
   function handleSubmit(e) {
-    if (props.pageSaveMovies) {
-      e.preventDefault();
-      props.onFilterMyMovies();
-    } else {
-      e.preventDefault();
-      props.onMovies();
-      props.onPreloader(true);
-    }
+    e.preventDefault();
+    props.onMovies();
+    props.onPreloader(true);
   }
 
   return(

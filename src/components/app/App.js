@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { mainApi } from "../../utils/MainApi";
 import { moviesApi } from "../../utils/MoviesApi";
+import {filterMovies} from "../../utils/FilterMovies";
 
 import ProtectedRoute from '../protectedRoute/ProtectedRoute';
 import Register from '../Register/Register';
@@ -22,10 +23,17 @@ function App() {
   const [loggedIn, setloggedIn] = useState(false);
   const [errorServer, setErrorServer] = useState('');
   const [profileInfo, setProfileInfo] = useState('');
-  const [movies, setMovies] = useState([]);
   const [errorMoviesApi, setErrorMoviesApi] = useState('');
   const [finallyMoviesApi, setFinallyMoviesApi] = useState(false);
   const [preloader, setPreloader] = useState(false);
+  const [filtredMovies, setFiltredMovies] = useState([]);
+  const [amountMovies, setAmountMovies] = useState(0);
+  const [moviesName, setMoviesName] = useState('');
+  const [sevedMoviesName, setSevedMoviesName] = useState('');
+  const [shortMovies, setShortMovies] = useState(false);
+  const [savedShortMovies, setSavedShortMovies] = useState(false);
+  const [myMovies, setMyMovies] = useState([])
+  const [filerMyMovies, setFilterMyMovies] = useState([]);
 
   useEffect(() => {
     handleCheckedToken();
@@ -62,10 +70,20 @@ function App() {
         setJwt(jwtToken);
         setloggedIn(true);
         setCurrentUser(res.user);
+        getMyMovies(jwtToken);
       }).catch((err) => {
         console.log(err);
       });
     }
+  }
+
+  function getMyMovies(jwtToken) {
+    mainApi.getMovies(jwtToken).then((res) => {
+      setMyMovies(res.movie);
+      setFilterMyMovies(res.movie);
+    }).catch((err) => {
+      setErrorMoviesApi(err.message);
+    })
   }
 
   function handleEditProfil(value) {
@@ -76,14 +94,37 @@ function App() {
     })
   }
 
+  function savedMovie(value) {
+    mainApi.savedMovie(value, jwt).then((res) => {
+      getMyMovies(jwt);
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+
+  function filtredMyMovies() {
+    setFilterMyMovies(filterMovies(moviesName, myMovies, shortMovies))
+  }
+
   function getMovies() {
     moviesApi.getMovies().then((res) => {
-      setMovies(res);
+      setFiltredMovies(filterMovies(moviesName, res, shortMovies));
+      setSavedShortMovies(shortMovies)
+      setSevedMoviesName(moviesName)
     }).catch((err) => {
       setErrorMoviesApi(err.message);
     }).finally(() => {
       setFinallyMoviesApi(true);
       setPreloader(false)
+    })
+  }
+
+  function deleteSavedMovie(card) {
+    mainApi.deleteMovie(card._id, jwt).then(() => {
+      setMyMovies((state) => state.filter((c) => c._id !== card._id));
+      setFilterMyMovies((state) => state.filter((c) => c._id !== card._id));
+    }).catch((err) => {
+      console.log(err);
     })
   }
 
@@ -106,12 +147,22 @@ function App() {
             loggedIn={loggedIn}
             >
               <Movies onOpen={setIsPopupOpen}
+              myMovies={myMovies}
+              onMovieName={setMoviesName}
+              moviesName={sevedMoviesName}
+              onShortMovies={setShortMovies}
+              shortMovies={savedShortMovies}
+              amountMovies={amountMovies}
+              onAmountMovies={setAmountMovies}
               onMovies={getMovies}
-              allMovies={movies}
+              filtredMovies={filtredMovies}
               errorMoviesApi={errorMoviesApi}
               finallyMoviesApi={finallyMoviesApi}
               onPreloader={setPreloader}
               preloader={preloader}
+              onSavedMovie={savedMovie}
+              pageSaveMovies={false}
+              onDeleteMovie={deleteSavedMovie}
               />
             </ProtectedRoute>
           }/>
@@ -120,7 +171,18 @@ function App() {
             exact path="/"
             loggedIn={loggedIn}
             >
-              <SavedMovies onOpen={setIsPopupOpen}/>
+              <SavedMovies onOpen={setIsPopupOpen}
+              myMovies={myMovies}
+              onMyMovies={getMyMovies}
+              onFilterMyMovies={filtredMyMovies}
+              onSavedMovie={savedMovie}
+              onMovieName={setMoviesName}
+              onShortMovies={setShortMovies}
+              pageSaveMovies={true}
+              filerMyMovies={filerMyMovies}
+              errorMoviesApi={errorMoviesApi}
+              onDeleteMovie={deleteSavedMovie}
+              />
             </ProtectedRoute>
           }/>
           <Route path="/profile" element={
@@ -134,7 +196,11 @@ function App() {
               errorServer={errorServer}
               onErrorServer={setErrorServer}
               onEditProfile={handleEditProfil}
-              onOpen={setIsPopupOpen}/>
+              onOpen={setIsPopupOpen}
+              onSevedMoviesName={setSevedMoviesName}
+              onSavedShortMovies={setSavedShortMovies}
+              onFiltredMovies={setFiltredMovies}
+              onFinallyMoviesApi={setFinallyMoviesApi}/>
             </ProtectedRoute>
           }/>
           <Route path="*" element={

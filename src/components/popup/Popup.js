@@ -7,7 +7,9 @@ function Popup(props) {
         <button type='button' onClick={props.closePopup} className='popup__exit'></button>
         <div className='popup__link-container'>
           <nav className='popup__links'>
-            <p className='popup__link'>Главная</p>
+            <NavLink onClick={props.closePopup} className={( { isActive }) => isActive ? 'popup__link_active' : 'popup__link'} to='/'>
+              Главная
+            </NavLink>
             <NavLink onClick={props.closePopup} className={( { isActive }) => isActive ? 'popup__link_active' : 'popup__link'} to='/movies'>
               Фильмы
             </NavLink>
