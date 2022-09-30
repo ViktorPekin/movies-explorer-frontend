@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
+
 import MoviesCard from "../moviesCard/MoviesCard";
+import { SCREEN_MOBILE, SCREEN_PC, NUMBER_CARD_PC, NUMBER_CARD_TABLET, NUMBER_CARD_MOBILE, NUMBER_ADD_PC, NUMBER_ADD_MOBILE } from "../../utils/constants";
 
 function MoviesCardList(props) {
   const [addNumberPerPage, setAddNumberPerPage] = useState(0);
@@ -7,23 +9,23 @@ function MoviesCardList(props) {
   const [hiddenButton, setHiddenButton] = useState(true);
 
   useEffect(() => {
-    if (window.screen.width > 1024) {
+    if (window.screen.width > SCREEN_PC) {
       if (props.amountMovies > 0) {
-        checkedNuberCard(props.amountMovies, 3)
+        checkedNuberCard(props.amountMovies, NUMBER_ADD_PC);
       } else {
-        checkedNuberCard(12, 3)
+        checkedNuberCard(NUMBER_CARD_PC, NUMBER_ADD_PC);
       }
-    } else if (window.screen.width > 480) {
+    } else if (window.screen.width > SCREEN_MOBILE) {
       if (props.amountMovies > 0) {
-        checkedNuberCard(props.amountMovies, 3)
+        checkedNuberCard(props.amountMovies, NUMBER_ADD_PC);
       } else {
-        checkedNuberCard(8, 3)
+        checkedNuberCard(NUMBER_CARD_TABLET, NUMBER_ADD_PC);
       }
     } else {
       if (props.amountMovies > 0) {
-        checkedNuberCard(props.amountMovies, 3)
+        checkedNuberCard(props.amountMovies, NUMBER_ADD_PC);
       } else {
-        checkedNuberCard(5, 3)
+        checkedNuberCard(NUMBER_CARD_MOBILE, NUMBER_ADD_PC);
       }
     }
   },[]);
@@ -48,12 +50,12 @@ function MoviesCardList(props) {
   }
 
   function changeWidthWindow() {
-    if (window.screen.width > 1024) {
-      checkedNuberCard(props.amountMovies, 3);
-    } else if (window.screen.width > 480) {
-      checkedNuberCard(props.amountMovies, 2);
+    if (window.screen.width > SCREEN_PC) {
+      checkedNuberCard(props.amountMovies, NUMBER_ADD_PC);
+    } else if (window.screen.width > SCREEN_MOBILE) {
+      checkedNuberCard(props.amountMovies, NUMBER_ADD_MOBILE);
     } else {
-      checkedNuberCard(props.amountMovies, 2);
+      checkedNuberCard(props.amountMovies, NUMBER_ADD_MOBILE);
     }
   }
 

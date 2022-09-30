@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useState, useContext, useEffect } from 'react';
-import { CurrentUserContext } from '../../context/CurrentUserContext'
+import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { useFormWithValidation } from '../../utils/castomHooks/useFormWithValidation';
 import Header from '../../components/header/Header';
 
@@ -18,14 +18,14 @@ function Profile(props) {
 
   function handleName(e) {
     setName(e.target.value);
-    validation.handleChange(e);
+    validation.handleChange(e, currentUser);
     props.onErrorServer('');
     props.onProfileInfo('');
   }
 
   function handleEmail(e) {
     setEmail(e.target.value);
-    validation.handleChange(e);
+    validation.handleChange(e, currentUser);
     props.onErrorServer('');
     props.onProfileInfo('');
   }
@@ -42,9 +42,12 @@ function Profile(props) {
   function signOut(){
     localStorage.removeItem('token');
     props.onSevedMoviesName('');
-    props.onSavedShortMovies(false);
     props.onFiltredMovies([]);
-    props.onFinallyMoviesApi(false);
+    props.onAllMoviesApi([]);
+    localStorage.removeItem('short-movies');
+    localStorage.removeItem('movies-name');
+    localStorage.removeItem('movies-saved-list');
+    localStorage.removeItem('login');
     props.onLogin(false);
     navigate('/');
   }
@@ -53,19 +56,19 @@ function Profile(props) {
     <div className='profile'>
       <Header openPopup={props.onOpen}/>
       <main className='profile__container container'>
-        <h2 className='profile__title'>Привет, Виталий!</h2>
+        <h2 className='profile__title'>{`Привет, ${currentUser.name}`}</h2>
         <form onSubmit={handleSubmit} className='profile__form'>
           <div className='profile__label-contaioner'>
             <div className='profile__label profile__label_name'>
               <p className='profile__text'>Имя</p>
-              <input onChange={handleName} name='name' className='profile__input' type='text' placeholder={currentUser.name}
-              minLength="2" maxLength="30" required></input>
+              <input onChange={handleName} name='name' className='profile__input' type='text'
+              minLength="2" maxLength="30" required defaultValue={currentUser.name}></input>
             </div>
             <span className={validation.errors.name ? 'profile__input-error_active' : 'profile__input-error'}>{validation.errors.name}</span>
             <div className='profile__border'></div>
             <div className='profile__label profile__label_email'>
               <p className='profile__text'>E-mail</p>
-              <input onChange={handleEmail} name='email' className='profile__input' type='email' placeholder={currentUser.email} required></input>
+              <input onChange={handleEmail} name='email' className='profile__input' type='email' required defaultValue={currentUser.email}></input>
             </div>
             <span className={validation.errors.name ? 'profile__input-error_active' : 'profile__input-error'}>{validation.errors.email}</span>
           </div>

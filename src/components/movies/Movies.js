@@ -5,7 +5,6 @@ import MoviesCardList from '../moviesCardList/MoviesCardList';
 import Preloader from '../movies/preloader/Preloader';
 
 function Movies(props) {
-
   return(
     <div className='movies'>
       <Header openPopup={props.onOpen}/>
@@ -15,7 +14,6 @@ function Movies(props) {
         onMovies={props.onMovies}
         onMovieName={props.onMovieName}
         onShortMovies={props.onShortMovies}
-        shortMovies={props.shortMovies}
         onPreloader={props.onPreloader}
         pageSaveMovies={props.pageSaveMovies}/>
         {props.preloader ? <Preloader/>

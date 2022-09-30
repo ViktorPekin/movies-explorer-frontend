@@ -6,7 +6,7 @@
   const [errors, setErrors] = useState({});
   const [isValid, setIsValid] = useState(false);
 
-  const handleChange = (event) => {
+  const handleChange = (event, userInfo) => {
     const target = event.target;
     const name = target.name;
     const value = target.value;
@@ -17,6 +17,11 @@
       setIsValid(emailValidator.validate(value));
       if (!emailValidator.validate(value)) {
         setErrors({...errors, [name]: "Неправельная почта" });
+      }
+    }
+    if (userInfo) {
+      if (userInfo.name === value) {
+        setIsValid(false);
       }
     }
   };

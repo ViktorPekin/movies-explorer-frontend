@@ -17,7 +17,7 @@ function SearchForm(props) {
         <form onSubmit={handleSubmit} className='search-form__form'>
           <input onChange={handleMoviesName} name="movieName" type='text' className='search-form__input' required defaultValue={props.moviesName ? props.moviesName : ''}></input>
           <button className='search-form__button'></button>
-          <FilterCheckbox onShortMovies={props.onShortMovies} shortMovies={props.shortMovies}/>
+          <FilterCheckbox onShortMovies={props.onShortMovies}/>
         </form>
       </div>
     </section>

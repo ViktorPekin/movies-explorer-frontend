@@ -44,7 +44,7 @@ function Register(props) {
   return(
     <div className='log-reg'>
       <div className='log-reg__container'>
-        <div className='log-reg__logo' src={logo}/>
+      <Link to='/'><img className='log-reg__logo' src={logo} alt='Логотип'/></Link>
         <h2 className='log-reg__title'>Добро пожаловать!</h2>
         <form onSubmit={handleSubmit} className='log-reg__form'>
           <div className='log-reg__label-container'>

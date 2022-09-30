@@ -5,6 +5,7 @@ import { mainApi } from "../../utils/MainApi";
 import { moviesApi } from "../../utils/MoviesApi";
 import {filterMovies} from "../../utils/FilterMovies";
 
+import ProtectedRouteAuth from '../protectedRoute/ProtectedRouteAuth';
 import ProtectedRoute from '../protectedRoute/ProtectedRoute';
 import Register from '../Register/Register';
 import Main from '../main/Main';
@@ -24,20 +25,37 @@ function App() {
   const [errorServer, setErrorServer] = useState('');
   const [profileInfo, setProfileInfo] = useState('');
   const [errorMoviesApi, setErrorMoviesApi] = useState('');
-  const [finallyMoviesApi, setFinallyMoviesApi] = useState(false);
+  const [finallyMoviesApi, setFinallyMoviesApi] = useState(true);
   const [preloader, setPreloader] = useState(false);
+  const [allMoviesApi, setAllMoviesApi] = useState([]);
   const [filtredMovies, setFiltredMovies] = useState([]);
   const [amountMovies, setAmountMovies] = useState(0);
   const [moviesName, setMoviesName] = useState('');
   const [sevedMoviesName, setSevedMoviesName] = useState('');
   const [shortMovies, setShortMovies] = useState(false);
-  const [savedShortMovies, setSavedShortMovies] = useState(false);
   const [myMovies, setMyMovies] = useState([])
   const [filerMyMovies, setFilterMyMovies] = useState([]);
 
   useEffect(() => {
     handleCheckedToken();
+    setMoviesName(localStorage.getItem('movies-name'));
+    setSevedMoviesName(localStorage.getItem('movies-name'));
+    setShortMovies(JSON.parse(localStorage.getItem('short-movies')));
+    setFiltredMovies(checkedMovie());
   }, []);
+
+  function checkedMovie() {
+    if (JSON.parse(localStorage.getItem('movies-saved-list')) === null) {
+      setFinallyMoviesApi(false);
+      return [];
+    } else if (JSON.parse(localStorage.getItem('movies-saved-list')).length === 0){
+      setFinallyMoviesApi(false);
+      return JSON.parse(localStorage.getItem('movies-saved-list'));
+    } else {
+      setFinallyMoviesApi(true);
+      return JSON.parse(localStorage.getItem('movies-saved-list'));
+    }
+  }
 
   function closePopup() {
     setIsPopupOpen(false);
@@ -54,9 +72,10 @@ function App() {
   function handleLogin(value) {
     mainApi.authUser(value).then((res) => {
       if (res.token) {
+        setloggedIn(true);
         localStorage.setItem('token', res.token);
-        handleCheckedToken();
         navigate('/movies');
+        handleCheckedToken();
       }
     }).catch((err) => {
       setErrorServer(err.message);
@@ -67,6 +86,7 @@ function App() {
     if (localStorage.getItem('token')) {
       const jwtToken = localStorage.getItem('token');
       mainApi.checkedToken(jwtToken).then((res) => {
+        localStorage.setItem('login', true);
         setJwt(jwtToken);
         setloggedIn(true);
         setCurrentUser(res.user);
@@ -88,6 +108,7 @@ function App() {
 
   function handleEditProfil(value) {
     mainApi.patchProfile(value, jwt).then((res) => {
+      setCurrentUser(res.newUser);
       setProfileInfo(`Новое имя: ${res.newUser.name} / Новый E-mail: ${res.newUser.email}`);
     }).catch((err) => {
       setErrorServer(err.message);
@@ -108,15 +129,41 @@ function App() {
 
   function getMovies() {
     moviesApi.getMovies().then((res) => {
-      setFiltredMovies(filterMovies(moviesName, res, shortMovies));
-      setSavedShortMovies(shortMovies)
-      setSevedMoviesName(moviesName)
+      setAllMoviesApi(res);
+      setFiltredMovies(res);
+      setSevedMoviesName(moviesName);
+      localStorage.setItem('movies-name', moviesName);
+      localStorage.setItem('short-movies', JSON.stringify(shortMovies));
+      localStorage.setItem('movies-saved-list', JSON.stringify(res));
     }).catch((err) => {
       setErrorMoviesApi(err.message);
     }).finally(() => {
+      setPreloader(false);
       setFinallyMoviesApi(true);
-      setPreloader(false)
     })
+  }
+
+  async function filtredMoviesApi() {
+    return filterMovies(moviesName, allMoviesApi, shortMovies);
+  }
+
+  function addInfoMovies() {
+    if (allMoviesApi.length > 0) {
+      filtredMoviesApi().then(res => {
+        setFiltredMovies(res);
+        setSevedMoviesName(moviesName);
+        localStorage.setItem('movies-name', moviesName);
+        localStorage.setItem('short-movies', JSON.stringify(shortMovies));
+        localStorage.setItem('movies-saved-list', JSON.stringify(res));
+      }).catch((err) => {
+        console.log(err);
+      }).finally(() => {
+        setPreloader(false);
+        setFinallyMoviesApi(true);
+      });
+    } else {
+      getMovies();
+    }
   }
 
   function deleteSavedMovie(card) {
@@ -133,43 +180,52 @@ function App() {
       <CurrentUserContext.Provider value={currentUser}>
         <Routes>
           <Route path='/signup' element={
-            <Register errorServer={errorServer} onErrorServer={setErrorServer} onRegistration={handleRegistration}/>
+            <ProtectedRouteAuth
+            path="/"
+            loggedIn={loggedIn ? loggedIn : localStorage.getItem('token')}
+            >
+              <Register errorServer={errorServer} onErrorServer={setErrorServer} onRegistration={handleRegistration}/>
+            </ProtectedRouteAuth>
           }/>
           <Route path='/signin' element={
-            <Login errorServer={errorServer} onErrorServer={setErrorServer} onLogin={handleLogin}/>
+            <ProtectedRouteAuth
+            path="/"
+            loggedIn={loggedIn ? loggedIn : localStorage.getItem('token')}
+            >
+              <Login errorServer={errorServer} onErrorServer={setErrorServer} onLogin={handleLogin}/>
+            </ProtectedRouteAuth>
           }/>
           <Route path="/" element={
             <Main onOpen={setIsPopupOpen} onLogin={loggedIn}/>
           }/>
           <Route path='/movies' element={
             <ProtectedRoute
-            exact path="/"
-            loggedIn={loggedIn}
+            path="/"
+            loggedIn={loggedIn ? loggedIn : localStorage.getItem('token')}
             >
               <Movies onOpen={setIsPopupOpen}
               myMovies={myMovies}
               onMovieName={setMoviesName}
               moviesName={sevedMoviesName}
               onShortMovies={setShortMovies}
-              shortMovies={savedShortMovies}
               amountMovies={amountMovies}
               onAmountMovies={setAmountMovies}
-              onMovies={getMovies}
+              onMovies={addInfoMovies}
               filtredMovies={filtredMovies}
               errorMoviesApi={errorMoviesApi}
-              finallyMoviesApi={finallyMoviesApi}
               onPreloader={setPreloader}
               preloader={preloader}
               onSavedMovie={savedMovie}
               pageSaveMovies={false}
               onDeleteMovie={deleteSavedMovie}
+              finallyMoviesApi={finallyMoviesApi}
               />
             </ProtectedRoute>
           }/>
           <Route path="/saved-movies" element={
             <ProtectedRoute
             exact path="/"
-            loggedIn={loggedIn}
+            loggedIn={loggedIn ? loggedIn : localStorage.getItem('token')}
             >
               <SavedMovies onOpen={setIsPopupOpen}
               myMovies={myMovies}
@@ -188,7 +244,7 @@ function App() {
           <Route path="/profile" element={
             <ProtectedRoute
             exact path="/"
-            loggedIn={loggedIn}
+            loggedIn={loggedIn ? loggedIn : localStorage.getItem('token')}
             >
               <Profile onLogin={setloggedIn}
               profileInfo={profileInfo}
@@ -198,9 +254,8 @@ function App() {
               onEditProfile={handleEditProfil}
               onOpen={setIsPopupOpen}
               onSevedMoviesName={setSevedMoviesName}
-              onSavedShortMovies={setSavedShortMovies}
               onFiltredMovies={setFiltredMovies}
-              onFinallyMoviesApi={setFinallyMoviesApi}/>
+              onAllMoviesApi={setAllMoviesApi}/>
             </ProtectedRoute>
           }/>
           <Route path="*" element={
