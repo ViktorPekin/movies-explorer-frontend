@@ -130,11 +130,11 @@ function App() {
   function getMovies() {
     moviesApi.getMovies().then((res) => {
       setAllMoviesApi(res);
-      setFiltredMovies(res);
+      setFiltredMovies(filterMovies(moviesName, res, shortMovies));
       setSevedMoviesName(moviesName);
       localStorage.setItem('movies-name', moviesName);
       localStorage.setItem('short-movies', JSON.stringify(shortMovies));
-      localStorage.setItem('movies-saved-list', JSON.stringify(res));
+      localStorage.setItem('movies-saved-list', JSON.stringify(filterMovies(moviesName, res, shortMovies)));
     }).catch((err) => {
       setErrorMoviesApi(err.message);
     }).finally(() => {

@@ -46,7 +46,11 @@ function MoviesCardList(props) {
   function checkedNuberCard(all, add) {
     props.onAmountMovies(all);
     setAddNumberPerPage(add);
-    (props.filtredMovies.length > all) ? setHiddenButton(false) : setHiddenButton(true);
+    if (JSON.parse(localStorage.getItem('movies-saved-list')) === null) {
+      setHiddenButton(true);
+    } else {
+      (JSON.parse(localStorage.getItem('movies-saved-list')).length > all) ? setHiddenButton(false) : setHiddenButton(true);
+    }
   }
 
   function changeWidthWindow() {

@@ -16,6 +16,11 @@ function Profile(props) {
     validation.isValid ? setValid(true) : setValid(false);
   }, [validation]);
 
+  useEffect(() => {
+    setName(currentUser.name);
+    setEmail(currentUser.email);
+  }, [currentUser.name, currentUser.email])
+
   function handleName(e) {
     setName(e.target.value);
     validation.handleChange(e, currentUser);
@@ -32,6 +37,7 @@ function Profile(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    console.log(name);
     props.onEditProfile({
       name,
       email
