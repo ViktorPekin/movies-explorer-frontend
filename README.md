@@ -21,8 +21,4 @@ https://disk.yandex.ru/d/wYGE0HAr-BP_lg
 https://movies41.students.nomoredomains.sbs/
 
 ## Статус
-- В разработке
-
-## Pull Requests
-
-https://github.com/ViktorPekin/movies-explorer-frontend/pull/2
+Завершен
