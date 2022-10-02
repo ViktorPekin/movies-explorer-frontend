@@ -3,10 +3,10 @@ import logo from '../../images/logo.svg';
 
 function Header(props) {
   return(
-    <header className='header'>
+    <header className={props.onMain ? 'header_main' : 'header'}>
       <div className='header__container container'>
         <div className='header__link-container'>
-          <img className='header__logo' src={logo} alt="Логотип"/>
+          <Link to='/'><img className='header__logo' src={logo} alt="Логотип"/></Link>
           <nav className='header__links'>
             <NavLink to='/movies'
             className={( { isActive }) => isActive ? 'header__link_active' : 'header__link'}>Фильмы</NavLink>
@@ -14,7 +14,7 @@ function Header(props) {
             className={( { isActive }) => isActive ? 'header__link_active' : 'header__link'}>Сохранённые фильмы</NavLink>
           </nav>
         </div>
-        <Link className='header__account' to='/profile'>Аккаунт</Link>
+        <Link className={props.onMain ? 'header__account_main' : 'header__account'} to='/profile'>Аккаунт</Link>
         <button type='button' onClick={props.openPopup} className='header__burger'></button>
       </div>
     </header>

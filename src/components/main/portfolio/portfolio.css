@@ -21,6 +21,7 @@
 .portfolio__link-container {
   min-height: 50px;
   margin-top: 20px;
+  list-style-type: none;
 }
 
 .portfolio__link-container:first-child {
@@ -28,7 +29,7 @@
 }
 
 .portfolio__link-container:after {
-  content: '1';
+  content: '';
   margin-top: 19px;
   display: block;
   width: 100%;

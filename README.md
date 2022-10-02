@@ -15,5 +15,14 @@ npm run start
 ## Ссылка на макет
 
 https://disk.yandex.ru/d/wYGE0HAr-BP_lg
+
+## Ссылка на проект
+
+https://movies41.students.nomoredomains.sbs/
+
 ## Статус
 - В разработке
+
+## Pull Requests
+
+https://github.com/ViktorPekin/movies-explorer-frontend/pull/2

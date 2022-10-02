@@ -4,12 +4,13 @@ import Techs from './techs/Techs';
 import AboutMe from './aboutMe/AboutMe';
 import Portfolio from './portfolio/Portfolio';
 import HeaderMain from '../header/HeaderMain';
+import Header from '../header/Header';
 import Footer from '../footer/Footer';
 
-function Main() {
+function Main(props) {
   return(
     <div className='main'>
-      <HeaderMain/>
+      {props.onLogin ? <Header onMain={true} openPopup={props.onOpen}/> : <HeaderMain/>}
       <main>
         <Promo/>
         <AboutProject/>
