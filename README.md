@@ -21,4 +21,5 @@ https://disk.yandex.ru/d/wYGE0HAr-BP_lg
 https://movies41.students.nomoredomains.sbs/
 
 ## Статус
-Завершен
+
+✅ Завершен
