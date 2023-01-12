@@ -13,63 +13,63 @@ class MainApi {
       } else {
         throw new Error(res.message);
       }
-    })
+    });
   }
 
   authUser(data) {
     return fetch(`${this._baseUrl}/signin`, {
-      method: 'POST',
+      method: "POST",
       headers: this._header,
       body: JSON.stringify({
         email: data.email,
-        password: data.password
-      })
+        password: data.password,
+      }),
     }).then(this._checkResponse);
   }
 
   registrationUser(data) {
     return fetch(`${this._baseUrl}/signup`, {
-      method: 'POST',
+      method: "POST",
       headers: this._header,
       body: JSON.stringify({
         email: data.email,
         password: data.password,
-        name: data.name
-      })
+        name: data.name,
+      }),
     }).then(this._checkResponse);
   }
 
   patchProfile(data, jwt) {
     return fetch(`${this._baseUrl}/users/me`, {
-      method: 'PATCH',
+      method: "PATCH",
       headers: {
-        'Content-Type': 'application/json',
-        authorization: `Bearer ${jwt}`
+        "Content-Type": "application/json",
+        authorization: `Bearer ${jwt}`,
       },
       authorization: `Bearer ${jwt}`,
       body: JSON.stringify({
         name: data.name,
-        email: data.email
-      })
+        email: data.email,
+      }),
     }).then(this._checkResponse);
   }
 
   getMovies(jwt) {
     return fetch(`${this._baseUrl}/movies`, {
-      method: 'GET',
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization" : `Bearer ${jwt}`
-    }
+        Authorization: `Bearer ${jwt}`,
+      },
     }).then(this._checkResponse);
   }
 
   savedMovie(data, jwt) {
     return fetch(`${this._baseUrl}/movies`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        authorization: `Bearer ${jwt}`
+        "Content-Type": "application/json",
+        authorization: `Bearer ${jwt}`,
       },
       authorization: `Bearer ${jwt}`,
       body: JSON.stringify({
@@ -84,27 +84,27 @@ class MainApi {
         movieId: data.id,
         nameRU: data.nameRU,
         nameEN: data.nameEN,
-      })
+      }),
     }).then(this._checkResponse);
   }
 
   deleteMovie(data, jwt) {
     return fetch(`${this._baseUrl}/movies/${data}`, {
-      method: 'DELETE',
+      method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        "Authorization" : `Bearer ${jwt}`
-    }
+        Authorization: `Bearer ${jwt}`,
+      },
     }).then(this._checkResponse);
   }
 
   checkedToken(jwt) {
     return fetch(`${this._baseUrl}/users/me`, {
-      method: 'GET',
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization" : `Bearer ${jwt}`
-    }
+        Authorization: `Bearer ${jwt}`,
+      },
     }).then(this._checkResponse);
   }
 }
@@ -112,6 +112,6 @@ class MainApi {
 export const mainApi = new MainApi({
   baseUrl: "https://api.movies41.students.nomoredomains.sbs",
   header: {
-    "Content-Type": "application/json"
-  }
+    "Content-Type": "application/json",
+  },
 });
