@@ -24,4 +24,5 @@ https://viktorpekin.github.io/movies-explorer-frontend/
 
 ## Статус
 
-- ✅ Завершен
+✅ Завершен
+
