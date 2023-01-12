@@ -1,6 +1,7 @@
 # Проект: Movies-Explorer
 
 ## Описание
+
 Сайт портфолио. А также видеогаререя с возможностью регистрации, авторизации, искать и добавлять фильмы, редактировать профиль. Проект подключен к внешнему API.
 Данный проект сделан на React.
 
@@ -10,6 +11,7 @@ HTML / CSS / БЭМ / БЭМ Nested / Адаптивная верска / JavaSc
 Работа с API / React
 
 ## Запуск проекта
+
 npm run start
 
 ## Ссылка на макет
@@ -18,11 +20,8 @@ https://disk.yandex.ru/d/wYGE0HAr-BP_lg
 
 ## Ссылка на проект
 
-https://movies41.students.nomoredomains.sbs/
+https://viktorpekin.github.io/movies-explorer-frontend/
 
 ## Статус
-- В разработке
 
-## Pull Requests
-
-https://github.com/ViktorPekin/movies-explorer-frontend/pull/2
+- ✅ Завершен
